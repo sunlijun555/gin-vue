@@ -1,0 +1,27 @@
+system:
+  host: "0.0.0.0"
+  port: 5001
+  env: debug
+
+logger:
+  level: info
+  prefix: '[go-vue3]'
+  director: logger
+  show_line: true
+  log_in_console: true
+
+mysql:
+  host: 192.168.66.11
+  port: 30306
+  db: go-vue
+  username: root
+  password: abc123456
+  logLevel: dev
+  charset: utf8
+  maxIdle: 50
+  maxOpen: 150
+
+redis:
+ address: 192.168.66.11:16379
+ password: abc123456
+ db: 0

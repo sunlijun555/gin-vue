@@ -1,0 +1,246 @@
+definitions:
+  model.AddSysMenuDto:
+    properties:
+      icon:
+        type: string
+      menuName:
+        type: string
+      menuStatus:
+        type: integer
+      menuType:
+        type: integer
+      parentId:
+        type: integer
+      sort:
+        type: integer
+      url:
+        type: string
+      value:
+        type: string
+    type: object
+  model.CreateSysRoleDto:
+    properties:
+      description:
+        type: string
+      roleKey:
+        type: string
+      roleName:
+        type: string
+      status:
+        type: integer
+    type: object
+  model.SysMenuIdDto:
+    properties:
+      id:
+        type: integer
+    type: object
+  model.UpdateSysMenuDto:
+    properties:
+      icon:
+        type: string
+      id:
+        type: integer
+      menuName:
+        type: string
+      menuStatus:
+        type: integer
+      menuType:
+        type: integer
+      parentId:
+        type: integer
+      sort:
+        type: integer
+      url:
+        type: string
+      value:
+        type: string
+    type: object
+  result.Result:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: 后台API接口文档
+  title: 后台系统
+  version: "1.0"
+paths:
+  /api/failed:
+    get:
+      description: 失败测试接口
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: Failed测试接口
+      tags:
+      - 测试相关接口
+  /api/success:
+    get:
+      description: 成功测试接口
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: Success测试接口
+      tags:
+      - 测试相关接口
+  /api/sysMenu/add:
+    post:
+      description: 新增菜单
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.AddSysMenuDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 新增菜单
+      tags:
+      - 菜单相关接口
+  /api/sysMenu/delete:
+    delete:
+      description: 根据id删除菜单
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.SysMenuIdDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 根据id删除菜单
+      tags:
+      - 菜单相关接口
+  /api/sysMenu/info:
+    get:
+      description: 根据id查询菜单
+      parameters:
+      - description: 菜单id
+        in: query
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 根据id查询菜单
+      tags:
+      - 菜单相关接口
+  /api/sysMenu/list:
+    get:
+      description: 查询菜单列表
+      parameters:
+      - description: 菜单名称
+        in: query
+        name: menuName
+        type: string
+      - description: 菜单状态
+        in: query
+        name: menuStatus
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 查询菜单列表
+      tags:
+      - 菜单相关接口
+  /api/sysMenu/update:
+    put:
+      description: 修改菜单
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateSysMenuDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 修改菜单
+      tags:
+      - 菜单相关接口
+  /api/sysRole/add:
+    post:
+      description: 新增角色
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateSysRoleDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 新增角色
+      tags:
+      - 角色相关接口
+  /api/sysRole/list:
+    get:
+      description: 查询角色列表
+      parameters:
+      - description: 角色名称
+        in: query
+        name: roleName
+        type: string
+      - description: 角色状态
+        in: query
+        name: roleStatus
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 查询角色列表
+      tags:
+      - 角色相关接口
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
