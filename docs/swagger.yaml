@@ -34,6 +34,11 @@ definitions:
       id:
         type: integer
     type: object
+  model.SysRoleIdDto:
+    properties:
+      id:
+        type: integer
+    type: object
   model.UpdateSysMenuDto:
     properties:
       icon:
@@ -54,6 +59,26 @@ definitions:
         type: string
       value:
         type: string
+    type: object
+  model.UpdateSysRoleDto:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      roleKey:
+        type: string
+      roleName:
+        type: string
+      status:
+        type: integer
+    type: object
+  model.UpdateSysRoleStatusDto:
+    properties:
+      id:
+        type: integer
+      status:
+        type: integer
     type: object
   result.Result:
     properties:
@@ -216,10 +241,57 @@ paths:
       summary: 新增角色
       tags:
       - 角色相关接口
+  /api/sysRole/delete:
+    delete:
+      description: 根据id删除角色
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.SysRoleIdDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 根据id删除角色
+      tags:
+      - 角色相关接口
+  /api/sysRole/info:
+    get:
+      description: 根据id查询角色
+      parameters:
+      - description: 角色id
+        in: query
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 根据id查角色
+      tags:
+      - 角色相关接口
   /api/sysRole/list:
     get:
-      description: 查询角色列表
+      description: 分页查询角色列表
       parameters:
+      - description: 分页数量
+        in: query
+        name: pageNum
+        type: integer
+      - description: 每页大小
+        in: query
+        name: pageSize
+        type: integer
       - description: 角色名称
         in: query
         name: roleName
@@ -228,6 +300,14 @@ paths:
         in: query
         name: roleStatus
         type: string
+      - description: 开始时间
+        in: query
+        name: beginTime
+        type: string
+      - description: 结束时间
+        in: query
+        name: endTime
+        type: string
       produces:
       - application/json
       responses:
@@ -235,7 +315,60 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/result.Result'
-      summary: 查询角色列表
+      summary: 分页查询角色列表
+      tags:
+      - 角色相关接口
+  /api/sysRole/update:
+    put:
+      description: 修改角色
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateSysRoleDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 修改角色
+      tags:
+      - 角色相关接口
+  /api/sysRole/updateStatus:
+    put:
+      description: 修改角色状态
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateSysRoleStatusDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 修改角色状态
+      tags:
+      - 角色相关接口
+  /api/sysRole/vo/list:
+    get:
+      description: 查询角色下拉列表
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/result.Result'
+      summary: 查询角色下拉列表
       tags:
       - 角色相关接口
 securityDefinitions:

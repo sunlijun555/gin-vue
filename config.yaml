@@ -11,8 +11,8 @@ logger:
   log_in_console: true
 
 mysql:
-  host: 192.168.66.11
-  port: 30306
+  host: 192.168.61.133
+  port: 3306
   db: go-vue
   username: root
   password: abc123456
@@ -22,6 +22,6 @@ mysql:
   maxOpen: 150
 
 redis:
- address: 192.168.66.11:16379
+ address: 192.168.61.133:6379
  password: abc123456
  db: 0

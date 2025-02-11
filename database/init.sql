@@ -1,5 +1,5 @@
 -- 创建数据库（如果不存在）
-CREATE DATABASE IF NOT EXISTS `go-vue` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `go-vue` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE `go-vue`;
 
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `sys_menu` (
   `sort` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '排序',
   `create_time` DATETIME NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统菜单表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系统菜单表';
 
 CREATE TABLE IF NOT EXISTS `sys_role_menu` (
   `role_id` INT UNSIGNED NOT NULL COMMENT '角色id',
@@ -33,3 +33,9 @@ CREATE TABLE IF NOT EXISTS `sys_role` (
   `create_time` DATETIME NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='系统角色表';
+
+CREATE TABLE IF NOT EXISTS `sys_admin_role` (
+  `role_id` INT UNSIGNED NOT NULL COMMENT '角色id',
+  `admin_id` INT UNSIGNED NOT NULL COMMENT '用户id',
+  PRIMARY KEY (`role_id`, `admin_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户角色关联表';

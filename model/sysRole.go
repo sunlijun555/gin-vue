@@ -21,3 +21,25 @@ type CreateSysRoleDto struct {
 	Status      int    `json:"status"`
 	Description string `json:"description"`
 }
+
+type UpdateSysRoleDto struct {
+	ID          uint   `json:"id"`
+	RoleName    string `json:"roleName"`
+	RoleKey     string `json:"roleKey"`
+	Status      int    `json:"status"`
+	Description string `json:"description"`
+}
+
+type SysRoleIdDto struct {
+	ID uint `json:"id"`
+}
+
+type UpdateSysRoleStatusDto struct {
+	ID     uint `json:"id"`
+	Status int  `json:"status"`
+}
+
+type SysRoleVo struct {
+	ID       uint   `json:"id"`
+	RoleName string `json:"roleName"`
+}

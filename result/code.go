@@ -9,6 +9,7 @@ type Codes struct {
 	DelSysMenuFailed uint
 	NorDeleteMenu    uint
 	SysRoleIsExist   uint
+	DelSysRoleFaild  uint
 }
 
 //ApiCode状态码，并实例化
@@ -19,6 +20,7 @@ var Apicode = &Codes{
 	DelSysMenuFailed: 601,
 	NorDeleteMenu:    602,
 	SysRoleIsExist:   603,
+	DelSysRoleFaild:  604,
 }
 
 //状态信息初始化
@@ -30,6 +32,7 @@ func init() {
 		Apicode.DelSysMenuFailed: "菜单已分配不能删除",
 		Apicode.NorDeleteMenu:    "存在子菜单不能删除",
 		Apicode.SysRoleIsExist:   "系统角色已存在，请重新输入",
+		Apicode.DelSysRoleFaild:  "角色已分配不能删除",
 	}
 }
 
